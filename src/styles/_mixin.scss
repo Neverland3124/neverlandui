@@ -1,0 +1,92 @@
+@use "sass:color";
+// 传入$padding-y, $padding-x, $font-size, $border-radius
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  border-radius: $border-radius;
+}
+
+@mixin button-style(
+  $background,
+  $border,
+  $color,
+  $hover-background: color.adjust($background, $lightness: 7.5%),
+  $hover-border: color.adjust($border, $lightness: 10%),
+  $hover-color: $color
+) {
+  color: $color;
+  background: $background;
+  border-color: $border;
+  &:hover {
+    // & 是一个父选择器引用符号。它用于引用当前选择器的父选择器
+    color: $hover-color;
+    background: $hover-background;
+    border-color: $hover-border;
+  }
+  &:focus, 
+  // &: 用于在嵌套规则中引用父选择器，并添加伪类或伪元素
+  // 就是给 .button 添加一个 :hover 效果
+  &.focus {
+    // &. 用于在嵌套规则中引用父选择器，并添加类名。
+    // &.active 就是给 .button 添加一个 .active 类名
+    color: $hover-color;
+    background: $hover-background;
+    border-color: $hover-border;
+  }
+  &:disabled,
+  &.disabled {
+    color: $color;
+    background: $background;
+    border-color: $border;
+  }
+}
+
+@mixin alert-style($background, $border, $color) {
+  color: $color;
+  background: $background;
+  border-color: $border;
+}
+
+@mixin zoom-animation(
+  $direction: "top",
+  $scaleStart: scaleY(0),
+  $scaleEnd: scaleY(1),
+  $origin: center top
+) {
+  .zoom-in-#{$direction}-enter {
+    opacity: 0;
+    transform: $scaleStart;
+  }
+  .zoom-in-#{$direction}-enter-active {
+    opacity: 1;
+    transform: $scaleEnd;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
+      opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+    transform-origin: $origin;
+  }
+  .zoom-in-#{$direction}-exit {
+    opacity: 1;
+  }
+  .zoom-in-#{$direction}-exit-active {
+    opacity: 0;
+    transform: $scaleStart;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
+      opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+    transform-origin: $origin;
+  }
+}
+
+@mixin border-right-radius($raduis) {
+  border-top-right-radius: $raduis;
+  border-bottom-right-radius: $raduis;
+}
+
+@mixin border-left-radius($raduis) {
+  border-top-left-radius: $raduis;
+  border-bottom-left-radius: $raduis;
+}
+
+@mixin border-top-radius($raduis) {
+  border-top-left-radius: $raduis;
+  border-top-right-radius: $raduis;
+}
