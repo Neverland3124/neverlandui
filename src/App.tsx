@@ -3,17 +3,56 @@ import Button, { ButtonSize, ButtonType } from "./components/Button/button"
 import Menu from "./components/Menu/menu"
 import MenuItem from "./components/Menu/menuItem"
 import SubMenu from "./components/Menu/subMenu"
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+// import { faCoffee } from "@fortawesome/free-solid-svg-icons"
+import Icon from "./components/Icon/icon"
+
+// 添加所有icons
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { fas } from "@fortawesome/free-solid-svg-icons"
+library.add(fas)
+import Transition from "./components/Transition/transition"
 
 function App() {
   const [count, setCount] = useState(0)
+  const [show, setShow] = useState(false)
 
   return (
     <>
       <div className="card">
-        <Menu defaultIndex="0" onSelect={(index) => alert(index)}>
+        <Button
+          onClick={() => {
+            setShow(!show)
+          }}
+        >
+          Toggle Transition
+        </Button>
+        <Transition in={show} timeout={300} animation="zoom-in-right">
+          <div>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+          </div>
+          {/* <Button btnType="primary" size="lg">
+            Hello
+          </Button> */}
+        </Transition>
+        <br />
+        {/* <FontAwesomeIcon icon={faCoffee} size="10x" /> */}
+        <Icon icon="arrow-down" theme="primary" size="sm" />
+        <Icon icon="arrow-down" theme="secondary" size="lg" />
+        <Icon icon="arrow-down" theme="success" size="2xl" />
+        <Icon icon="arrow-down" theme="info" size="10x" />
+        <Icon icon="arrow-down" theme="warning" size="10x" />
+        <Icon icon="arrow-down" theme="danger" size="10x" />
+        <Icon icon="arrow-down" theme="light" size="10x" />
+        <Icon icon="arrow-down" theme="dark" size="10x" />
+        <Menu defaultIndex="0">
           <MenuItem>cool link</MenuItem>
           <MenuItem>cool link 2</MenuItem>
-          <SubMenu title="dropdown">
+          <SubMenu title="dropdown ">
             <MenuItem>drop1</MenuItem>
             <MenuItem>drop2</MenuItem>
           </SubMenu>
@@ -22,7 +61,7 @@ function App() {
         <Menu defaultIndex="0" mode="vertical" defaultOpenSubMenus={["2"]}>
           <MenuItem>cool link</MenuItem>
           <MenuItem>cool link 2</MenuItem>
-          <SubMenu title="dropdown">
+          <SubMenu title="test">
             <MenuItem>drop1</MenuItem>
             <MenuItem>drop2</MenuItem>
           </SubMenu>
@@ -30,20 +69,16 @@ function App() {
         </Menu>
         <br />
         <Button autoFocus> Hello</Button>
-        <Button btnType={ButtonType.Danger} size={ButtonSize.Large}>
+        <Button btnType="danger" size="lg">
           Hello
         </Button>
-        <Button
-          btnType={ButtonType.Link}
-          href="https://www.baidu.com"
-          target="_blank"
-        >
+        <Button btnType="link" href="https://www.baidu.com" target="_blank">
           Hello
         </Button>
-        <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>
+        <Button btnType="primary" size="lg">
           Hello
         </Button>
-        <Button btnType={ButtonType.Default}>Hello</Button>
+        <Button btnType="default">Hello</Button>
         <h1>Hello, NeverlandUI!</h1>
         <h2>Hello, NeverlandUI!</h2>
         <h3>Hello, NeverlandUI!</h3>

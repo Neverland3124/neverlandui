@@ -1,0 +1,9 @@
+@use "../../styles/variables" as v;
+
+// iterate
+// # css 选择器的变量
+@each $key, $val in v.$theme-colors {
+  .icon-#{$key} {
+    color: $val;
+  }
+}

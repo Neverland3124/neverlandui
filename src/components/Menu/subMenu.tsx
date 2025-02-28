@@ -3,6 +3,8 @@ import React, { FC, useContext, useState, ReactNode } from "react"
 import classNames from "classnames"
 import { MenuContext } from "./menu"
 import { MenuItemProps } from "./menuItem"
+import Icon from "../Icon/icon"
+import Transition from "../Transition/transition"
 
 export interface SubMenuProps {
   index?: string
@@ -28,7 +30,7 @@ export const SubMenu: FC<SubMenuProps> = ({
   const [menuOpen, setOpen] = useState(isOpend)
   const classes = classNames("menu-item submenu-item", className, {
     "is-active": context.index === index,
-    // "is-opened": menuOpen,
+    "is-opened": menuOpen,
     "is-vertical": context.mode === "vertical",
   })
   const handleClick = (e: React.MouseEvent) => {
@@ -90,14 +92,18 @@ export const SubMenu: FC<SubMenuProps> = ({
       }
     })
     return (
-      //   <Transition in={menuOpen} timeout={300} animation="zoom-in-top">
-      <ul className={subMenuClasses}>{childrenComponent}</ul>
-      //   </Transition>
+      <Transition in={menuOpen} timeout={300} animation="zoom-in-top">
+        <ul className={subMenuClasses}>{childrenComponent}</ul>
+      </Transition>
     )
   }
   return (
-    <li key={index} className={classes} {...clickEvents} {...hoverEvents}>
-      <div className="submenu-title">{title}</div>
+    <li key={index} className={classes} {...hoverEvents}>
+      <div className="submenu-title" {...clickEvents}>
+        {/* click在title上，以免点到submenu内容也关闭 */}
+        {title}
+        <Icon icon="angle-down" className="arrow-icon" />
+      </div>
       {renderChildren()}
     </li>
   )

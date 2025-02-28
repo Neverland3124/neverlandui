@@ -1,16 +1,17 @@
 // config
 @use "variables";
 
-//layout
+// layout
 @use "reboot";
 
-// //mixin
+// mixin
 @use "mixin";
 
-// // animation
-// @import "animation";
-// // button
+// animation
+// animate.css
+@use "animation";
 
+// button
 @use "../components/Button/style" as button-style;
 
 // //alert
@@ -23,7 +24,7 @@
 // @import "../components/Tabs/style";
 
 // // icon
-// @import "../components/Icon/style";
+@use "../components/Icon/style" as icon-style;
 
 // //input
 // @import "../components/Input/style";

@@ -1,16 +1,19 @@
 import React, { FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from "react"
 import classNames from "classnames"
 
-export enum ButtonSize {
-  Large = "lg",
-  Small = "sm",
-}
-export enum ButtonType {
-  Primary = "primary",
-  Default = "default",
-  Danger = "danger",
-  Link = "link",
-}
+// export enum ButtonSize {
+//   Large = "lg",
+//   Small = "sm",
+// }
+// export enum ButtonType {
+//   Primary = "primary",
+//   Default = "default",
+//   Danger = "danger",
+//   Link = "link",
+// }
+export type ButtonSize = "lg" | "sm"
+export type ButtonType = "primary" | "default" | "danger" | "link"
+
 // intersection types 交叉类型 将两个类型合并为一个类型
 type NativeButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLElement>
 // 带连接的属性

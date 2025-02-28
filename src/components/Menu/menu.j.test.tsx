@@ -10,6 +10,20 @@ import Menu, { MenuProps } from "./menu"
 import MenuItem from "./menuItem"
 import SubMenu from "./subMenu"
 
+jest.mock("../Icon/icon", () => {
+  // 将 font awesome 的 icon 加入到 mock 中
+  return () => {
+    return
+  }
+})
+jest.mock("react-transition-group", () => {
+  return {
+    CSSTransition: (props: any) => {
+      return props.children
+    },
+  }
+})
+
 const testProps: MenuProps = {
   defaultIndex: "0",
   onSelect: jest.fn(),
