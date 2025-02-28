@@ -1,33 +1,33 @@
-@use "@styles/mixin";
-@use "@styles/variables";
+@use "../../styles/mixin" as m;
+@use "../../styles/variables" as v;
 
 .btn {
   position: relative; // 相对定位
   display: inline-block; // 既可以设置宽高，又不会独占一行
-  font-weight: variables.$btn-font-weight;
-  line-height: variables.$btn-line-height;
-  color: variables.$body-color;
+  font-weight: v.$btn-font-weight;
+  line-height: v.$btn-line-height;
+  color: v.$body-color;
   white-space: nowrap; //  防止按钮内的文本换行
   text-align: center; // 按钮内文本的对齐方式为居中对齐
   vertical-align: middle; // 钮的垂直对齐方式为居中对齐
   background-image: none;
-  border: variables.$btn-border-width solid transparent;
+  border: v.$btn-border-width solid transparent;
   // 使用 mixin，可以代码重用
-  @include mixin.button-size(
-    variables.$btn-padding-y,
-    variables.$btn-padding-x,
-    variables.$btn-font-size,
-    variables.$border-radius
+  @include m.button-size(
+    v.$btn-padding-y,
+    v.$btn-padding-x,
+    v.$btn-font-size,
+    v.$border-radius
   );
-  box-shadow: variables.$btn-box-shadow;
+  box-shadow: v.$btn-box-shadow;
   cursor: pointer;
-  transition: variables.$btn-transition;
+  transition: v.$btn-transition;
   // 定义按钮在禁用状态下的样式
   &.disabled, // class
   &[disabled] {
     // disabled attribute 属性
     cursor: not-allowed; //  设置禁用状态下的光标样式为禁止
-    opacity: variables.$btn-disabled-opacity; // 透明度
+    opacity: v.$btn-disabled-opacity; // 透明度
     box-shadow: none; // 移除阴影
     // > 是子选择器，* 是通配符选择器
     > * {
@@ -38,65 +38,65 @@
 }
 
 .btn-lg {
-  @include mixin.button-size(
-    variables.$btn-padding-y-lg,
-    variables.$btn-padding-x-lg,
-    variables.$btn-font-size-lg,
-    variables.$btn-border-radius-lg
+  @include m.button-size(
+    v.$btn-padding-y-lg,
+    v.$btn-padding-x-lg,
+    v.$btn-font-size-lg,
+    v.$btn-border-radius-lg
   );
 }
 .btn-sm {
-  @include mixin.button-size(
-    variables.$btn-padding-y-sm,
-    variables.$btn-padding-x-sm,
-    variables.$btn-font-size-sm,
-    variables.$btn-border-radius-sm
+  @include m.button-size(
+    v.$btn-padding-y-sm,
+    v.$btn-padding-x-sm,
+    v.$btn-font-size-sm,
+    v.$btn-border-radius-sm
   );
 }
 
 .btn-primary {
-  @include mixin.button-style(
-    variables.$primary,
-    variables.$primary,
-    variables.$white
+  @include m.button-style(
+    v.$primary,
+    v.$primary,
+    v.$white
   );
 }
 .btn-danger {
-  @include mixin.button-style(
-    variables.$danger,
-    variables.$danger,
-    variables.$white
+  @include m.button-style(
+    v.$danger,
+    v.$danger,
+    v.$white
   );
 }
 
 .btn-default {
-  @include mixin.button-style(
-    variables.$white,
-    variables.$gray-400,
-    variables.$body-color,
-    variables.$white,
-    variables.$primary,
-    variables.$primary
+  @include m.button-style(
+    v.$white,
+    v.$gray-400,
+    v.$body-color,
+    v.$white,
+    v.$primary,
+    v.$primary
   );
 }
 
 .btn-link {
-  font-weight: variables.$font-weight-normal;
-  color: variables.$btn-link-color;
-  text-decoration: variables.$link-decoration;
+  font-weight: v.$font-weight-normal;
+  color: v.$btn-link-color;
+  text-decoration: v.$link-decoration;
   box-shadow: none;
   &:hover {
-    color: variables.$btn-link-hover-color;
-    text-decoration: variables.$link-hover-decoration;
+    color: v.$btn-link-hover-color;
+    text-decoration: v.$link-hover-decoration;
   }
   &:focus,
   &.focus {
-    text-decoration: variables.$link-hover-decoration;
+    text-decoration: v.$link-hover-decoration;
     box-shadow: none;
   }
   &:disabled,
   &.disabled {
-    color: variables.$btn-link-disabled-color;
+    color: v.$btn-link-disabled-color;
     pointer-events: none;
   }
 }

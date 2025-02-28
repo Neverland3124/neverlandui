@@ -11,13 +11,13 @@
 // @import "animation";
 // // button
 
-@use "../components/Button/style";
+@use "../components/Button/style" as button-style;
 
 // //alert
 // @import "../components/Alert/style";
 
 // // menu
-// @import "../components/Menu/style";
+@use "../components/Menu/style" as menu-style;
 
 // //navs
 // @import "../components/Tabs/style";
