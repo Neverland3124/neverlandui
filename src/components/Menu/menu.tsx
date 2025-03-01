@@ -1,4 +1,12 @@
-import React, { useState, createContext, CSSProperties, ReactNode } from "react"
+import React, {
+  useState,
+  createContext,
+  CSSProperties,
+  ReactNode,
+  useRef,
+  useEffect,
+  RefObject,
+} from "react"
 import classNames from "classnames"
 import { MenuItemProps } from "./menuItem"
 
@@ -12,7 +20,7 @@ export interface MenuProps {
   /**菜单类型 横向或者纵向 */
   mode?: MenuMode
   style?: CSSProperties
-  /**点击菜单项触发的回掉函数 */
+  /**点击菜单项触发的回调函数 */
   onSelect?: selectCallback
   /**设置子菜单的默认打开 只在纵向模式下生效 */
   defaultOpenSubMenus?: string[] // index 的数组
@@ -37,7 +45,7 @@ export const Menu: React.FC<MenuProps> = ({
   children,
   defaultIndex = "0",
   onSelect,
-  defaultOpenSubMenus,
+  defaultOpenSubMenus = [],
 }) => {
   const classes = classNames("neverlandui-menu", className, {
     "menu-vertical": mode === "vertical",
@@ -52,6 +60,7 @@ export const Menu: React.FC<MenuProps> = ({
       onSelect(index)
     }
   }
+
   const passedContext: IMenuContext = {
     index: currentActive ? currentActive : "0",
     onSelect: handleClick,

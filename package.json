@@ -10,7 +10,9 @@
     "preview": "vite preview",
     "test": "jest",
     "jtest": "jest",
-    "vtest": "vitest"
+    "vtest": "vitest",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
@@ -27,7 +29,15 @@
     "@babel/preset-env": "^7.26.9",
     "@babel/preset-react": "^7.26.3",
     "@babel/preset-typescript": "^7.26.0",
+    "@chromatic-com/storybook": "^3.2.5",
     "@eslint/js": "^9.21.0",
+    "@storybook/addon-essentials": "^8.6.2",
+    "@storybook/addon-onboarding": "^8.6.2",
+    "@storybook/blocks": "^8.6.2",
+    "@storybook/experimental-addon-test": "^8.6.2",
+    "@storybook/react": "^8.6.2",
+    "@storybook/react-vite": "^8.6.2",
+    "@storybook/test": "^8.6.2",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@types/classnames": "^2.3.0",
@@ -37,23 +47,32 @@
     "@types/react-dom": "^19.0.4",
     "@types/testing-library__jest-dom": "^5.14.9",
     "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/browser": "^3.0.7",
     "@vitest/coverage-v8": "^3.0.7",
     "babel-jest": "^29.7.0",
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.19",
+    "eslint-plugin-storybook": "^0.11.3",
     "globals": "^15.15.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jsdom": "^26.0.0",
     "path": "^0.12.7",
+    "playwright": "^1.50.1",
     "react-test-renderer": "^19.0.0",
     "sass-migrator": "^2.3.1",
+    "storybook": "^8.6.2",
     "ts-jest": "^29.2.6",
     "ts-node": "^10.9.2",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0",
     "vitest": "^3.0.7"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
   }
 }

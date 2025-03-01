@@ -1,0 +1,37 @@
+@use "../../styles/variables" as v;
+
+.neverlandui-auto-complete {
+  position: relative;
+}
+.neverlandui-suggestion-list {
+  list-style:none;
+  padding-left: 0;
+  white-space: nowrap;
+  position: absolute;
+  background: v.$white;
+  z-index: 100;
+  top: calc(100% + 8px);
+  left: 0;
+  border: v.$menu-border-width solid v.$menu-border-color;
+  box-shadow: v.$submenu-box-shadow;
+  width: 100%;
+  .suggstions-loading-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 75px;
+  }
+  .suggestion-item {
+    padding: v.$menu-item-padding-y v.$menu-item-padding-x;
+    cursor: pointer;
+    transition: v.$menu-transition;
+    color: v.$body-color;
+    &.is-active {
+      background: v.$menu-item-active-color !important;
+      color: v.$white !important;
+    }
+    &:hover {
+      color: v.$menu-item-active-color !important;
+    }
+  }
+}

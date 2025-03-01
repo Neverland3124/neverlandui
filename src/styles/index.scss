@@ -27,10 +27,10 @@
 @use "../components/Icon/style" as icon-style;
 
 // //input
-// @import "../components/Input/style";
+@use "../components/Input/style" as input-style;
 
 // //auto-complete
-// @import "../components/AutoComplete/style";
+@use "../components/AutoComplete/style" as auto-complete-style;
 
 // //select
 // @import "../components/Select/style";

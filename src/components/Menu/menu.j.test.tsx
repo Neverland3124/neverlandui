@@ -13,7 +13,7 @@ import SubMenu from "./subMenu"
 jest.mock("../Icon/icon", () => {
   // 将 font awesome 的 icon 加入到 mock 中
   return () => {
-    return
+    return <i className="fa" />
   }
 })
 jest.mock("react-transition-group", () => {

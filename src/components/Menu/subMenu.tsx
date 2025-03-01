@@ -1,10 +1,17 @@
-import React, { FC, useContext, useState, ReactNode } from "react"
-
+import React, {
+  FC,
+  useContext,
+  useState,
+  ReactNode,
+  RefObject,
+  useRef,
+} from "react"
 import classNames from "classnames"
 import { MenuContext } from "./menu"
 import { MenuItemProps } from "./menuItem"
 import Icon from "../Icon/icon"
 import Transition from "../Transition/transition"
+import useClickOutside from "../../hooks/useClickOutside"
 
 export interface SubMenuProps {
   index?: string
@@ -27,6 +34,11 @@ export const SubMenu: FC<SubMenuProps> = ({
       ? openedSubMenus.includes(index)
       : false
 
+  // 加入是否点击外部关闭下拉菜单
+  const componentRef = useRef<HTMLLIElement>(null)
+  useClickOutside(componentRef as RefObject<HTMLLIElement>, () => {
+    setOpen(false)
+  })
   const [menuOpen, setOpen] = useState(isOpend)
   const classes = classNames("menu-item submenu-item", className, {
     "is-active": context.index === index,
@@ -98,7 +110,12 @@ export const SubMenu: FC<SubMenuProps> = ({
     )
   }
   return (
-    <li key={index} className={classes} {...hoverEvents}>
+    <li
+      key={index}
+      className={classes}
+      {...hoverEvents}
+      ref={componentRef as RefObject<HTMLLIElement>}
+    >
       <div className="submenu-title" {...clickEvents}>
         {/* click在title上，以免点到submenu内容也关闭 */}
         {title}

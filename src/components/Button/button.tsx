@@ -35,7 +35,12 @@ interface BaseButtonProps {
   href?: string
   children: React.ReactNode // 现在FC 默认并不会包含 children属性
 }
-
+/**
+ * 页面中最常用的的按钮元素，适合于完成特定的交互，支持 HTML button 和 a 链接 的所有属性
+ * ~~~js
+ * import { Button } from 'neverlandui'
+ * ~~~
+ */
 export const Button: FC<ButtonProps> = ({
   btnType = "default", // 不再推荐使用 Button.defaultProps
   className,

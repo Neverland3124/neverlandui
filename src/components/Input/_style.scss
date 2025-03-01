@@ -1,0 +1,106 @@
+@use "../../styles/mixin" as m;
+@use "../../styles/variables" as v;
+
+.neverlandui-input-wrapper {
+  display: flex;
+  width: 100%;
+  margin-bottom: 30px;
+  position: relative;
+  .icon-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 35px;
+    justify-content: center;
+    color: v.$input-color;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    svg {
+      color: v.$input-placeholder-color;
+    }
+  }
+}
+.icon-wrapper+.neverlandui-input-inner {
+  padding-right: 35px;
+}
+.neverlandui-input-inner {
+  width: 100%;
+  padding: v.$input-padding-y v.$input-padding-x;
+  font-family: v.$input-font-family;
+  font-size: v.$input-font-size;
+  font-weight: v.$input-font-weight;
+  line-height: v.$input-line-height;
+  color: v.$input-color;
+  background-color: v.$input-bg;
+  background-clip: padding-box;
+  border: v.$input-border-width solid v.$input-border-color;
+
+  // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+  border-radius: v.$input-border-radius;
+
+  box-shadow: v.$input-box-shadow;
+  transition: v.$input-transition;
+
+  &:focus {
+    color: v.$input-focus-color;
+    background-color: v.$input-focus-bg;
+    border-color: v.$input-focus-border-color;
+    outline: 0;
+    box-shadow: v.$input-focus-box-shadow;
+    // Avoid using mixin so we can pass custom focus shadow properly
+  }
+  &::placeholder {
+    color: v.$input-placeholder-color;
+    // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+    opacity: 1;
+  }
+  &:disabled,
+  &[readonly] {
+    background-color: v.$input-disabled-bg;
+    border-color: v.$input-disabled-border-color;
+    // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
+    opacity: 1;
+  }
+}
+.neverlandui-input-group-prepend,
+.neverlandui-input-group-append {
+  display: flex;
+  align-items: center;
+  padding: v.$input-padding-y v.$input-padding-x;
+  margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
+  font-size: v.$input-font-size; // Match inputs
+  font-weight: v.$font-weight-normal;
+  line-height: v.$input-line-height;
+  color: v.$input-group-addon-color;
+  text-align: center;
+  white-space: nowrap;
+  background-color: v.$input-group-addon-bg;
+  border: v.$input-border-width solid v.$input-group-addon-border-color;
+  border-radius: v.$input-border-radius;
+}
+.neverlandui-input-group-append + .btn {
+  padding: 0;
+  border: 0;
+}
+.input-group > .neverlandui-input-group-prepend,
+.input-group.input-group-append > .neverlandui-input-inner {
+  @include m.border-right-radius(0);
+}
+
+.input-group > .neverlandui-input-group-append,
+.input-group.input-group-prepend > .neverlandui-input-inner {
+  @include m.border-left-radius(0);
+}
+
+.input-size-sm .neverlandui-input-inner {
+  padding: v.$input-padding-y-sm v.$input-padding-x-sm;
+  font-size: v.$input-font-size-sm;
+  border-radius: v.$input-border-radius-sm;
+}
+
+.input-size-lg .neverlandui-input-inner {
+  padding: v.$input-padding-y-lg v.$input-padding-x-lg;
+  font-size: v.$input-font-size-lg;
+  border-radius: v.$input-border-radius-lg;
+}

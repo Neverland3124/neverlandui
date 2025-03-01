@@ -6,12 +6,12 @@ import SubMenu from "./components/Menu/subMenu"
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // import { faCoffee } from "@fortawesome/free-solid-svg-icons"
 import Icon from "./components/Icon/icon"
-
 // 添加所有icons
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fas } from "@fortawesome/free-solid-svg-icons"
 library.add(fas)
 import Transition from "./components/Transition/transition"
+import Input from "./components/Input/input"
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,6 +20,15 @@ function App() {
   return (
     <>
       <div className="card">
+        <Input
+          size="lg"
+          icon="coffee"
+          prepend="https://"
+          // append=".com"
+          style={{ width: "300px" }}
+          // 外层大括号 {}：表示你正在进入 JavaScript 表达式的上下文。
+          // 内层大括号 {}：表示你正在创建一个 JavaScript 对象。
+        ></Input>
         <Button
           onClick={() => {
             setShow(!show)
