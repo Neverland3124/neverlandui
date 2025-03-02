@@ -1,50 +1,41 @@
-# React + TypeScript + Vite
+# neverlandui component library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- 使用 React+Vite+typescript 打造的组件库
 
-Currently, two official plugins are available:
+## 组件列表
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Button：按钮组件，支持不同的大小和类型。
+- Menu：菜单组件，支持嵌套的子菜单。
+- AutoComplete：自动完成输入框组件。
+- Icon：图标组件，使用 FontAwesome 图标库。
+- Input：输入框组件，支持不同的大小和附加元素。
+- Progress：进度条组件，支持自定义样式和显示文本。
+- Transition：过渡动画组件。
+- Upload：文件上传组件。
+- Form：表单组件，支持表单项的验证和布局
+- VirtualList: TODO
 
-## Expanding the ESLint configuration
+## 亮点
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- typescript with React Hooks
+- 使用 react-testing-library + jest 完成单元测试
+- 使用 storybook 本地调试和生成文档页面
+- 使用 react-doc-gen 自动生成文档
+- 使用第三方库扩充组件-(react-fontawesome, react-transition-group)
+- 样式使用（Sass）文件，掌握大型应用的 CSS 组织方法
 
-- Configure the top-level `parserOptions` property like this:
+### 一些本地开发命令
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+```bash
+// 启动本地环境
+npm run stroybook
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+// 跑单元测试
+npm test
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+// build可发布静态文件
+npm run build
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+// 发布到 npm
+npm run publish
 ```
