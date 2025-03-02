@@ -1,0 +1,34 @@
+@use "../../styles/variables" as v;
+
+.neverlandui-progress-bar {
+  width: 100%;
+  box-sizing: border-box;
+  .neverlandui-progress-bar-outer {
+    border-radius: v.$progress-border-radius;
+    background-color: v.$progress-bg;
+    overflow: hidden;
+    position: relative;
+  }
+  .neverlandui-progress-bar-inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    border-radius: v.$progress-border-radius;
+    line-height: 1;
+    transition: v.$progress-bar-transition;
+    .inner-text {
+      color: v.$progress-bar-color;
+      font-size: v.$progress-font-size;
+      margin: 0 5px;
+    }
+  }
+  @each $key, $val in v.$theme-colors {
+    .color-#{$key} {
+      background-color: $val;
+    }
+  }
+}

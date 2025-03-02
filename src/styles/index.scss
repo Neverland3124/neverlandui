@@ -36,10 +36,10 @@
 // @import "../components/Select/style";
 
 // //upload
-// @import "../components/Upload/style";
+@use "../components/Upload/style" as upload-style;
 
 // //progress
-// @import "../components/Progress/style";
+@use "../components/Progress/style" as progress-style;
 
 // // form
 // @import "../components/Form/style";

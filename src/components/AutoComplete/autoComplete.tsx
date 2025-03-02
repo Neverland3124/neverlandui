@@ -49,7 +49,7 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
       if (results instanceof Promise) {
         setLoading(true)
         results.then((data) => {
-          console.log(data)
+          // console.log(data)
           setLoading(false)
           setSuggestions(data)
         })
