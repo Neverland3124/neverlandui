@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import Menu from "./menu"
 import SubMenu from "./subMenu"
 import MenuItem from "./menuItem"
+import React from "react"
 
 const meta = {
   title: "第六章：Menu",

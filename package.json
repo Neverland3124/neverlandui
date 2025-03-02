@@ -1,32 +1,40 @@
 {
   "name": "neverlandui",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
+  "main": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "start": "vite",
+    "clean": "rimraf ./dist",
+    "lint": "eslint --ext js,ts,tsx src --max-warnings 5",
+    "build": "npm run clean && npm run build-es && npm run build-umd",
     "preview": "vite preview",
     "test": "jest",
     "jtest": "jest",
     "vtest": "vitest",
+    "test:nowatch": "cross-env CI=true jest",
+    "build-ts": "tsc -p tsconfig.build.json",
+    "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "build-es": "rollup --config rollup/rollup.esm.config.js",
+    "build-umd": "rollup --config rollup/rollup.umd.config.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
-    "@storybook/addon-actions": "^8.6.3",
     "@types/react-transition-group": "^4.4.12",
-    "async-validator": "^4.2.5",
     "axios": "^1.8.1",
     "classnames": "^2.5.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
     "react-transition-group": "^4.4.5",
     "sass": "^1.85.1"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.26.9",
@@ -34,6 +42,12 @@
     "@babel/preset-typescript": "^7.26.0",
     "@chromatic-com/storybook": "^3.2.5",
     "@eslint/js": "^9.21.0",
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-replace": "^6.0.2",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@storybook/addon-actions": "^8.6.3",
     "@storybook/addon-essentials": "^8.6.2",
     "@storybook/addon-onboarding": "^8.6.2",
     "@storybook/blocks": "^8.6.2",
@@ -58,12 +72,20 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "eslint-plugin-storybook": "^0.11.3",
     "globals": "^15.15.0",
+    "husky": "^9.1.7",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jsdom": "^26.0.0",
     "path": "^0.12.7",
     "playwright": "^1.50.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-test-renderer": "^19.0.0",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.34.9",
+    "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.24",
+    "rollup-plugin-sass": "^1.15.2",
+    "rollup-plugin-typescript2": "^0.36.0",
     "sass-migrator": "^2.3.1",
     "storybook": "^8.6.2",
     "ts-jest": "^29.2.6",
@@ -75,7 +97,13 @@
   },
   "eslintConfig": {
     "extends": [
-      "plugin:storybook/recommended"
+      "plugin:storybook/recommended",
+      "react-app"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test:nowatch && npm run lint"
+    }
   }
 }

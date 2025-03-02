@@ -32,7 +32,7 @@ export type IFormContext = Pick<
 export const FormContext = createContext<IFormContext>({} as IFormContext)
 
 export const Form: FC<FormProps> = ({
-  name = "viking",
+  name = "neverlandui",
   children,
   initialValues,
 }) => {
@@ -44,7 +44,7 @@ export const Form: FC<FormProps> = ({
   }
   return (
     <>
-      <form name={name} className="viking-form">
+      <form name={name} className="neverlandui-form">
         <FormContext.Provider value={passedContext}>
           {children}
         </FormContext.Provider>

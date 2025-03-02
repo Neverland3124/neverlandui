@@ -23,7 +23,7 @@ type Story = StoryObj<typeof meta>
 
 export const ABasicForm: Story = {
   render: () => (
-    <Form initialValues={{ username: "viking", agreement: true }}>
+    <Form initialValues={{ username: "neverlandui", agreement: true }}>
       <Item label="用户名" name="username">
         <Input />
       </Item>
@@ -48,7 +48,7 @@ export const ABasicForm: Story = {
           注册即代表你同意<a href="#">用户协议</a>
         </span>
       </div>
-      <div className="viking-form-submit-area">
+      <div className="neverlandui-form-submit-area">
         <Button type="button" btnType="primary">
           登陆
         </Button>

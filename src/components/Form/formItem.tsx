@@ -31,8 +31,8 @@ export const FormItem: FC<FormItemProps> = ({
   trigger = "onChange",
   getValueFromEvent = (e) => e.target.value,
 }) => {
-  const rowClass = classNames("viking-row", {
-    "viking-row-no-label": !label,
+  const rowClass = classNames("neverlandui-row", {
+    "neverlandui-row-no-label": !label,
   })
   const { dispatch, fields, initialValues } = useContext(FormContext)
   // 拿到注册，挂载一次
@@ -95,13 +95,13 @@ export const FormItem: FC<FormItemProps> = ({
     <div className={rowClass}>
       {/* label */}
       {label && (
-        <div className="viking-form-item-label">
+        <div className="neverlandui-form-item-label">
           {/* form 对应的 label */}
           <label title={label}>{label}</label>
         </div>
       )}
       {/* form item */}
-      <div className="viking-form-item">{returnChildNode}</div>
+      <div className="neverlandui-form-item">{returnChildNode}</div>
     </div>
   )
 }

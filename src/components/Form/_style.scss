@@ -1,21 +1,21 @@
 @use "../../styles/variables" as v;
 
-.viking-form {
-  .viking-row { 
+.neverlandui-form {
+  .neverlandui-row { 
     display: flex;
     align-items: center;
     margin-bottom: 25px;
-    &.viking-row-no-label {
+    &.neverlandui-row-no-label {
       flex-direction: row-reverse;
     }
-    .viking-form-item-label {
+    .neverlandui-form-item-label {
       flex-basis: 30%;
       text-align: right;
       padding-right: 20px;
       >label {
         margin-bottom: 0;
       }
-      >label.viking-form-item-required:before {
+      >label.neverlandui-form-item-required:before {
         display: inline-block;
         margin-right: 4px;
         color: v.$danger;
@@ -25,21 +25,21 @@
         content: "*";
       }
     }
-    .viking-form-item { 
+    .neverlandui-form-item { 
       flex-basis: 70%;
       position: relative;
-      .viking-input-wrapper {
+      .neverlandui-input-wrapper {
         margin-bottom: 0;
       }
-      .viking-form-item-has-error.viking-form-item-control {
-        .viking-input-inner {
+      .neverlandui-form-item-has-error.neverlandui-form-item-control {
+        .neverlandui-input-inner {
           border: 1px solid v.$danger;
           &:focus {
             box-shadow: v.$input-focus-box-shadow-error;
           }
         }  
       }
-      .viking-form-item-explain {
+      .neverlandui-form-item-explain {
         position: absolute;
         bottom: -25px;
         left: 0;
@@ -49,7 +49,7 @@
       }
     }
   }
-  .viking-form-submit-area { 
+  .neverlandui-form-submit-area { 
     display: flex;
     align-items: center;
     justify-content: center;  
