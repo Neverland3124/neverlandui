@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import Button, { ButtonSize, ButtonType } from "./components/Button/button"
 import Menu from "./components/Menu/menu"
 import MenuItem from "./components/Menu/menuItem"
@@ -17,8 +17,25 @@ function App() {
   const [count, setCount] = useState(0)
   const [show, setShow] = useState(false)
 
+  const [value, setValue] = useState("")
+  const inputRef = useRef<HTMLInputElement>(null)
   return (
     <>
+      {/* <input type="text" ref={inputRef} />
+      <button
+        onClick={() => {
+          if (inputRef.current) {
+            alert(inputRef.current.value)
+          }
+        }}
+      >
+        获取输入值
+      </button>
+      <input
+        type="text"
+        value={value} // 受控：value 由 state 控制
+        onChange={(e) => setValue(e.target.value)} // 必须有 onChange 处理更新，否则输入框无法修改
+      /> */}
       <div className="card">
         <Input
           size="lg"

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Input } from "./input"
+import Input from "./input"
 
 const meta = {
-  title: "第九章：Input",
+  title: "第八章：Input",
   id: "Input",
   component: Input,
   decorators: [
